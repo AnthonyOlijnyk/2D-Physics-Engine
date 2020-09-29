@@ -16,6 +16,9 @@
     <Filter Include="States">
       <UniqueIdentifier>{5db33317-1a9e-4e96-a38b-8619798daec4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{7e084099-fe76-4354-a027-ac4f6f4d65a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,6 +33,9 @@
     <ClCompile Include="State.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -40,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="State.h">
       <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

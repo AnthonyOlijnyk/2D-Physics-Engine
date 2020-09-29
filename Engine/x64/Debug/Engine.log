@@ -1,6 +1,6 @@
 ﻿  Game.cpp
   GameState.cpp
-  main.cpp
   State.cpp
+  main.cpp
   Generating Code...
   Engine.vcxproj -> C:\Users\antho\Desktop\engine\Engine\x64\Debug\Engine.exe

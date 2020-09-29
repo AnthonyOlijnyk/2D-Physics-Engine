@@ -31,14 +31,27 @@ void Game::initWindow() {
     this->window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
+void Game::initKeys() {
+    // emplace just adds to the map if the key is unique
+    this->supportedKeys.emplace("Escape", sf::Keyboard::Key::Escape);
+    this->supportedKeys.emplace("A", sf::Keyboard::Key::A);
+    this->supportedKeys.emplace("D", sf::Keyboard::Key::D);
+    this->supportedKeys.emplace("W", sf::Keyboard::Key::W);
+    this->supportedKeys.emplace("S", sf::Keyboard::Key::S);
+
+    // will print 0
+    //std::cout << supportedKeys["A"] << std::endl;
+}
+
 void Game::initStates() {
     // initialize game state with base window
-    this->states.push(new GameState(this->window));
+    this->states.push(new GameState(this->window, &this->supportedKeys));
 }
 
 Game::Game() {
     // initWindow and initStates called on creation of game object
     this->initWindow();
+    this->initKeys();
     this->initStates();
 }
 
@@ -51,6 +64,10 @@ Game::~Game() {
         delete this->states.top();
         this->states.pop();
     }
+}
+
+void Game::endApplication() {
+    std::cout << "Ending Application!" << std::endl;
 }
 
 void Game::updateDt() {
@@ -75,6 +92,17 @@ void Game::update() {
     // if the stack isn't empty, update the dt
     if (!this->states.empty()) {
         this->states.top()->update(this->dt);
+
+        if (this->states.top()->getQuit()) {
+            this->states.top()->endState();
+            delete this->states.top();
+            this->states.pop();
+        }
+    }
+    // applications end
+    else {
+        this->endApplication();
+        this->window->close();
     }
 }
 

@@ -17,13 +17,20 @@ private:
 	//creating a stack of possible states ie. menu
 	std::stack<State*> states;
 
+	// keyboard keys are int data type as the keyboard in sf
+	// is defined as an enum
+	std::map<std::string, int> supportedKeys;
+
 	//initializing the window and states
 	void initWindow();
+	void initKeys();
 	void initStates();
 
 public:
 	Game();
 	virtual ~Game();
+
+	void endApplication();
 
 	// reseting dt on game loop
 	void updateDt();
